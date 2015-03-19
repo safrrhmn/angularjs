@@ -15,6 +15,7 @@
 			    url: '/Welcome',
 			    templateUrl: "app/views/index.html",
 			    controller: 'Index',
+          controllerAs: 'main',
 				data: {
 					requireLogin: true
 				}
@@ -23,6 +24,7 @@
 				url: '/Login',
 				templateUrl: "app/views/login.html",
 				controller: 'Login',
+        controllerAs: 'login',
 				data: {
 					requireLogin: false
 				}

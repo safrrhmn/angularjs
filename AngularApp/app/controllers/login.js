@@ -12,11 +12,14 @@
       *
       */
 	/*@ngInject*/
-	function login($scope, $http, $state, loginService, authService) {
+	function login($http, $state, loginService) {
+		var vm = this;
+
+		vm.user = '';
 
 		// PUBLIC FUNCTIONS
-		$scope.submit = function () {
-			loginService.assignCurrentUser($scope.user);
+		vm.submit = function () {
+			loginService.assignCurrentUser(vm.user);
 			$state.go("Welcome");
 		}
 

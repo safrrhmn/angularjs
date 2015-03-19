@@ -13,10 +13,9 @@
       *
       */
     /*@ngInject*/
-    function Index($rootScope, $scope) {
+    function Index($rootScope) {
+    	var vm = this;
 
-	    $scope.user = $rootScope.currentUser;
-
-
+    	vm.currentUser = $rootScope.currentUser;
     }
 })();
