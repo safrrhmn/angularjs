@@ -27,8 +27,8 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
-.nuget
 packages
 *.dll
 node_modules
 Vendor
+
