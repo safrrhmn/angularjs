@@ -31,6 +31,7 @@
                 <ul class="nav navbar-nav">
 	                <li><a ui-sref="Welcome">Home</a></li>
 					<li><a ui-sref="Login">Login</a></li>
+                    <li><a ui-sref="pictures">Pictures</a></li>
                 </ul>
             </div>
         </div>
@@ -59,10 +60,12 @@
     
     <!-- inject:js -->
 	<script src="/app/angularapp.module.js"></script>
+	<script src="/app/services/loginService.js"></script>
+	<script src="/app/services/flickrService.js"></script>
+	<script src="/app/services/authService.js"></script>
+	<script src="/app/controllers/pictures.js"></script>
 	<script src="/app/controllers/login.js"></script>
 	<script src="/app/controllers/index.js"></script>
-	<script src="/app/services/loginService.js"></script>
-	<script src="/app/services/authService.js"></script>
 	<script src="/app/config.route.js"></script>
 	<script src="/app/config.js"></script>
 	<!-- endinject -->
