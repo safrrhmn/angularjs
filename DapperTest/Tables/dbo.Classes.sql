@@ -5,6 +5,7 @@ CREATE TABLE [dbo].[Classes]
 [TeacherId] [int] NULL,
 [StudentId] [int] NULL
 )
+GO
 ALTER TABLE [dbo].[Classes] ADD 
 CONSTRAINT [PK_Classes] PRIMARY KEY CLUSTERED  ([ClassId])
 GO
