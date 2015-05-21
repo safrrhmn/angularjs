@@ -41,6 +41,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc.Owin">
+      <HintPath>..\packages\Autofac.Mvc5.Owin.3.1.0\lib\net45\Autofac.Integration.Mvc.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Owin">
+      <HintPath>..\packages\Autofac.Owin.3.1.0\lib\net45\Autofac.Integration.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi">
+      <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi.Owin">
+      <HintPath>..\packages\Autofac.WebApi2.Owin.3.2.0\lib\net45\Autofac.Integration.WebApi.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -69,12 +87,15 @@
     <Reference Include="Microsoft.Owin.Host.SystemWeb">
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Owin.Security.3.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.Cookies">
       <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.Jwt">
       <HintPath>..\packages\Microsoft.Owin.Security.Jwt.3.0.0\lib\net45\Microsoft.Owin.Security.Jwt.dll</HintPath>
@@ -188,9 +209,19 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\MvcConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\AutofacConfig.cs" />
+    <Compile Include="Controllers\Api\ClassController.cs" />
+    <Compile Include="Controllers\Api\StudentClassController.cs" />
+    <Compile Include="Controllers\Api\StudentController.cs" />
+    <Compile Include="Controllers\Api\TeacherClassController.cs" />
+    <Compile Include="Controllers\Api\TeacherController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DependencyInjection\DataModule.cs" />
+    <Compile Include="DependencyInjection\MvcModule.cs" />
+    <Compile Include="DependencyInjection\WebApiModule.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,12 +229,23 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\angularapp.module.js" />
     <Content Include="app\config.js" />
+    <Content Include="app\config.resource.js" />
     <Content Include="app\config.route.js" />
     <Content Include="app\controllers\index.js" />
     <Content Include="app\controllers\login.js" />
     <Content Include="app\controllers\pictures.js" />
+    <Content Include="app\module.js" />
+    <Content Include="app\school\config.route.js" />
+    <Content Include="app\school\controllers\ClassManager.js" />
+    <Content Include="app\school\controllers\School.js" />
+    <Content Include="app\school\services\classService.js" />
+    <Content Include="app\school\services\studentService.js" />
+    <Content Include="app\school\services\teacherService.js" />
+    <Content Include="app\school\views\addClassModal.html" />
+    <Content Include="app\school\views\class.html" />
+    <Content Include="app\school\views\index.html" />
+    <Content Include="app\school\views\students.html" />
     <Content Include="app\services\authService.js" />
     <Content Include="app\services\flickrService.js" />
     <Content Include="app\services\loginService.js" />
@@ -660,6 +702,16 @@
     <Content Include="Content\styles\login.css.map">
       <DependentUpon>login.css</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AngularApp.Core\AngularApp.Core.csproj">
+      <Project>{D503DB69-BE72-4644-AF30-0F1A612D4D7E}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AngularApp.Infrastructure\AngularApp.Infrastructure.csproj">
+      <Project>{8B7C27B0-A2AE-46F2-9766-A69EB59A2182}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

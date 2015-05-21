@@ -12,6 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F46934
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularApp.Core", "AngularApp.Core\AngularApp.Core.csproj", "{D503DB69-BE72-4644-AF30-0F1A612D4D7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularApp.Infrastructure", "AngularApp.Infrastructure\AngularApp.Infrastructure.csproj", "{8B7C27B0-A2AE-46F2-9766-A69EB59A2182}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AngularApp.Sql", "AngularApp.Sql\AngularApp.Sql.sqlproj", "{20AEF6DC-80E1-453B-B5EB-E731A4C7CEB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +28,20 @@ Global
 		{E93CBF43-8589-4A25-9447-01BE4D06D254}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E93CBF43-8589-4A25-9447-01BE4D06D254}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E93CBF43-8589-4A25-9447-01BE4D06D254}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D503DB69-BE72-4644-AF30-0F1A612D4D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D503DB69-BE72-4644-AF30-0F1A612D4D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D503DB69-BE72-4644-AF30-0F1A612D4D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D503DB69-BE72-4644-AF30-0F1A612D4D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B7C27B0-A2AE-46F2-9766-A69EB59A2182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B7C27B0-A2AE-46F2-9766-A69EB59A2182}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B7C27B0-A2AE-46F2-9766-A69EB59A2182}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B7C27B0-A2AE-46F2-9766-A69EB59A2182}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20AEF6DC-80E1-453B-B5EB-E731A4C7CEB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20AEF6DC-80E1-453B-B5EB-E731A4C7CEB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20AEF6DC-80E1-453B-B5EB-E731A4C7CEB1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{20AEF6DC-80E1-453B-B5EB-E731A4C7CEB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20AEF6DC-80E1-453B-B5EB-E731A4C7CEB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20AEF6DC-80E1-453B-B5EB-E731A4C7CEB1}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

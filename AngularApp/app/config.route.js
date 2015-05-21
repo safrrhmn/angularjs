@@ -1,5 +1,4 @@
-﻿
-(function() {
+﻿(function() {
   'use strict';
 
   angular
@@ -9,35 +8,41 @@
   /*@ngInject*/
   function routeConfig($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise("/state1");
+    $urlRouterProvider.otherwise("/home");
 
     $stateProvider
-      .state('Welcome', {
-        url: '/Welcome',
-        templateUrl: "app/views/index.html",
-        controller: 'Index',
-        controllerAs: 'main',
-        data: {
-          requireLogin: true
+      .state('main', {
+        url: '/',
+        abstract: true,
+        views: {
+          'navbar@': {
+            templateUrl: 'app/views/partials/navbar.html'
+          },
+          'footer@': {
+            templateUrl: 'app/views/partials/footer.html'
+          }
         }
       })
-      .state('Login', {
-        url: '/Login',
-        templateUrl: "app/views/login.html",
-        controller: 'Login',
-        controllerAs: 'login',
-        data: {
-          requireLogin: false
-        }
+      .state('main.home', {
+        url: 'home',
+				views: {
+					'content@': {
+						templateUrl: "app/views/index.html",
+						controller: 'Index',
+						controllerAs: 'main'
+					}
+				}
+
       })
-      .state('pictures', {
-        url: '/pictures',
-        templateUrl: 'app/views/pictures.html',
-        controller: 'Pictures',
-        controllerAs: 'vm',
-        data: {
-            requireLogin: false
-        }
+      .state('main.pictures', {
+        url: 'pictures',
+				views: {
+					'content@': {
+						templateUrl: 'app/views/pictures.html',
+						controller: 'Pictures',
+						controllerAs: 'vm'
+					}
+				}
       })
   }
 })();

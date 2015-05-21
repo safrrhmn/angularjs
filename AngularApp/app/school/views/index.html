@@ -1,0 +1,30 @@
+<section>
+	<h1>Welcome to School</h1>
+
+	<div class="row">
+		<div class="col-md-4">
+			<div>
+				<button class="btn btn-primary" type="button" ng-click="school.addClass()">Add a Class</button>
+				<span ng-show="school.classes.length <= 0">No classes have been added</span>
+				<ul ng-show="school.classes.length > 0" class="schoolList">
+					<li ng-repeat="classObj in school.classes">
+						<div ng-click="school.showClass(classObj)">{{classObj.name}}</div>
+					</li>
+				</ul>
+			</div>
+
+			<div>
+				<button class="btn btn-primary" type="button" ng-click="school.addTeacher()">Add a Teacher</button>
+				<span ng-show="school.teachers.length <= 0">No classes have been added</span>
+				<ul ng-show="school.teachers.length > 0">
+					<li ng-repeat="teacher in school.teachers">
+						<div ng-click="school.showTeacher(classObj)">{{teacher.name}}</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div ui-view="classdetail"></div>
+		</div>
+	</div>
+</section>

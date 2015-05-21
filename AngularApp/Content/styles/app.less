@@ -1,19 +1,44 @@
-﻿@import "login.less";
+﻿@footer-height:60px;
 
+html {
+	position: relative;
+	min-height: 100%;
+}
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+	/* Margin bottom by footer height */
+	margin-bottom: @footer-height;
+
+	padding-top    : 50px;
+	padding-bottom : 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height:@footer-height;
+	background-color: #f5f5f5;
+	padding: @footer-height/4 20px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.schoolList {
+	padding : 0;
+
+	li {
+		list-style : none;
+		padding    : 5px;
+
+		div {
+			border  : 1px solid rgb(221, 219, 219);
+			padding : 10px;
+			cursor  : pointer;
+
+			&:hover {
+				background  : grey;
+				color       : white;
+				font-weight : bolder;
+			}
+		}
+	}
 }
