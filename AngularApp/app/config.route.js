@@ -26,7 +26,7 @@
       .state('main.home', {
         url: 'home',
 				views: {
-					'@': {
+					'content@': {
 						templateUrl: "app/views/index.html",
 						controller: 'Index',
 						controllerAs: 'main'
@@ -37,7 +37,7 @@
       .state('main.pictures', {
         url: 'pictures',
 				views: {
-					'@': {
+					'content@': {
 						templateUrl: 'app/views/pictures.html',
 						controller: 'Pictures',
 						controllerAs: 'vm'
