@@ -34,7 +34,7 @@ namespace Infrastructure.Repositories
 			{
 				const string sql = @"SELECT Classes.StudentsId AS TeacherClassId,ClassId,TeacherId FROM [AngularApp.Sql].dbo.[Classes.Teachers] WHERE ClassId = @classId";
 
-				return connection.Query<TeacherClass>(sql, classId).SingleOrDefault();
+				return connection.Query<TeacherClass>(sql, new { classId }).SingleOrDefault();
 			}
 		}
 
@@ -56,7 +56,7 @@ namespace Infrastructure.Repositories
 				const string sql = @"DELETE FROM [AngularApp.Sql].dbo.[Classes.Teachers]
 								 WHERE ClassId = @classId";
 
-				connection.Execute(sql, classId);
+				connection.Execute(sql, new { classId });
 			}
 		}
 	}

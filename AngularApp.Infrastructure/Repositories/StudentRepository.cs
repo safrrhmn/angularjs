@@ -62,7 +62,7 @@ namespace Infrastructure.Repositories
 								 FROM [AngularApp.Sql].dbo.Students
 								 WHERE StudentId = @studentId";
 
-				return connection.Query<Student>(sql, studentId).SingleOrDefault();
+				return connection.Query<Student>(sql, new {studentId}).SingleOrDefault();
 			}
 		}
 

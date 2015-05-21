@@ -26,7 +26,7 @@ namespace Infrastructure.Repositories
 								 Description
 								 FROM [AngularApp.Sql].dbo.Classes
 								 WHERE ClassId = @classId";
-				return connection.Query<Class>(sql, classId).SingleOrDefault();
+				return connection.Query<Class>(sql, new {classId}).SingleOrDefault();
 			}
 		}
 
@@ -48,7 +48,7 @@ namespace Infrastructure.Repositories
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
 				const string sql = @"DELETE FROM [AngularApp.Sql].dbo.Classes WHERE ClassId = @classId";
-				connection.Execute(sql, classId);
+				connection.Execute(sql, new { classId });
 			}
 		}		
 
