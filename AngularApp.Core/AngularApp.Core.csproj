@@ -39,12 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\Repositories\IClassRepository.cs" />
-    <Compile Include="Interfaces\Repositories\IStudentRepository.cs" />
-    <Compile Include="Interfaces\Repositories\ITeacherRepository.cs" />
-    <Compile Include="Interfaces\Services\IClassService.cs" />
-    <Compile Include="Interfaces\Services\IStudentService.cs" />
-    <Compile Include="Interfaces\Services\ITeacherService.cs" />
+    <Compile Include="DataAccess\IDbConnectionFactory.cs" />
+    <Compile Include="Repositories\IClassRepository.cs" />
+    <Compile Include="Repositories\IStudentRepository.cs" />
+    <Compile Include="Repositories\ITeacherRepository.cs" />
+    <Compile Include="Services\IClassService.cs" />
+    <Compile Include="Services\IStudentService.cs" />
+    <Compile Include="Services\ITeacherService.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\SlimClass.cs" />
     <Compile Include="Models\Student.cs" />

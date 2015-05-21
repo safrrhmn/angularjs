@@ -1,7 +1,8 @@
-﻿using System.Linq;
-using Core.Interfaces.Repositories;
-using Core.Interfaces.Services;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Core.Models;
+using Core.Repositories;
+using Core.Services;
 
 namespace Infrastructure.Services
 {
@@ -44,6 +45,11 @@ namespace Infrastructure.Services
 				Teacher = teacher,
 				Students = students
 			};
+		}
+
+		public IEnumerable<Class> Get()
+		{
+			throw new System.NotImplementedException();
 		}
 
 		public void Delete(int instanceId)

@@ -2,15 +2,16 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using Core.DataAccess;
 
 namespace Infrastructure.DataAccess
 {
-	public class DBConnectionFactory
+	public class DbConnectionFactory : IDbConnectionFactory
 	{
 		private readonly List<SqlConnection> _connectionList;
 		private readonly string _connectionstring;
 
-		public DBConnectionFactory(string connectionstring)
+		public DbConnectionFactory(string connectionstring)
 		{
 			_connectionstring = connectionstring;
 			_connectionList = new List<SqlConnection>();

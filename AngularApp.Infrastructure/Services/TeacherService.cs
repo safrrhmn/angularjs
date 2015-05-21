@@ -1,6 +1,6 @@
-﻿using Core.Interfaces.Repositories;
-using Core.Interfaces.Services;
-using Core.Models;
+﻿using Core.Models;
+using Core.Repositories;
+using Core.Services;
 
 namespace Infrastructure.Services
 {

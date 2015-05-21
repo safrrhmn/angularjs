@@ -30,4 +30,5 @@ packages
 *.dll
 node_modules
 Vendor
+.idea
 

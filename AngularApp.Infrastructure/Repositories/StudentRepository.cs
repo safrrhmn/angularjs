@@ -1,6 +1,7 @@
 ﻿using System.Linq;
-using Core.Interfaces.Repositories;
+using Core.DataAccess;
 using Core.Models;
+using Core.Repositories;
 using Dapper;
 using Infrastructure.DataAccess;
 
@@ -8,9 +9,9 @@ namespace Infrastructure.Repositories
 {
 	public class StudentRepository : IStudentRepository
 	{
-		private readonly DBConnectionFactory _dbConnectionFactory;
+		private readonly IDbConnectionFactory _dbConnectionFactory;
 
-		public StudentRepository(DBConnectionFactory dbConnectionFactory)
+		public StudentRepository(IDbConnectionFactory dbConnectionFactory)
 		{
 			_dbConnectionFactory = dbConnectionFactory;
 		}

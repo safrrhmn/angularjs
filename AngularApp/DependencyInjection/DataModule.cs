@@ -1,7 +1,8 @@
 ﻿using System.Configuration;
 using Autofac;
-using Core.Interfaces.Repositories;
-using Core.Interfaces.Services;
+using Core.DataAccess;
+using Core.Repositories;
+using Core.Services;
 using Infrastructure.DataAccess;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
@@ -21,7 +22,8 @@ namespace AngularApp.DependencyInjection
 			builder.RegisterType<ClassRepository>().As<IClassRepository>().InstancePerRequest();
 			builder.RegisterType<ClassService>().As<IClassService>().InstancePerRequest();
 
-			builder.Register(dbfac => new DBConnectionFactory(ConfigurationManager.ConnectionStrings["DapperTest"].ToString())).AsSelf().InstancePerRequest();
+			builder.Register(dbfac => new DbConnectionFactory(ConfigurationManager.ConnectionStrings["DapperTest"].ToString()))
+				.As<IDbConnectionFactory>().InstancePerRequest();
 
 			base.Load(builder);
 		}
