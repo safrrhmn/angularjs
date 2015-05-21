@@ -22,7 +22,7 @@ namespace AngularApp.Controllers.Api
 			var results = _teacherService.Get();
 			return Ok(results);
 		}
-		
+
 		[HttpGet]
 		[Route("{id}")]
 		public IHttpActionResult Get(int id)
@@ -43,7 +43,7 @@ namespace AngularApp.Controllers.Api
 		[Route("")]
 		public IHttpActionResult Update(Teacher teacher)
 		{
-			
+
 			try
 			{
 				_teacherService.Update(teacher);

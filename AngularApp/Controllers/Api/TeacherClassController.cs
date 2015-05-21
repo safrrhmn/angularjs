@@ -5,7 +5,7 @@ using Core.Services;
 
 namespace AngularApp.Controllers.Api
 {
-	[RoutePrefix("api/studentclass")]
+	[RoutePrefix("api/teacherclass")]
 	public class TeacherClassController : ApiController
 	{
 		private readonly ITeacherClassService _teacherClassService;
