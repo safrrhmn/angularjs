@@ -92,7 +92,7 @@ namespace Infrastructure.Repositories
 			{
 				const string sql = @"DELETE FROM [AngularApp.Sql].dbo.Students WHERE StudentId = @studentId";
 
-				connection.Execute(sql, studentId);
+				connection.Execute(sql, new { studentId });
 			}
 		}
 	}
