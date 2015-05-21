@@ -7,6 +7,6 @@ namespace Core.Repositories
 		int Insert(TeacherClass teacherToSave);
 		TeacherClass Get(int classId);
 		void Delete(int classId, int teacherId);
-		void Delete(int teacherClassId);
+		void Delete(int classId);
 	}
 }

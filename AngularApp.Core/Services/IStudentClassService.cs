@@ -8,6 +8,6 @@ namespace Core.Services
 		int Insert(StudentClass studentToSave);		
 		IEnumerable<StudentClass> Get(int classId);
 		void Delete(int classId, int studentId);
-		void Delete(int studentClassId);
+		void Delete(int classId);
 	}
 }

@@ -50,14 +50,14 @@ namespace Infrastructure.Repositories
 			}
 		}
 
-		public void Delete(int studentClassId)
+		public void Delete(int classId)
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
 				const string sql = @"DELETE FROM [AngularApp.Sql].dbo.[Classes.Students]
-								 WHERE Classes.StudentsId = @studentClassId";
+								 WHERE ClassId = @classId";
 
-				connection.Execute(sql, studentClassId);
+				connection.Execute(sql, classId);
 			}
 		}
 	}

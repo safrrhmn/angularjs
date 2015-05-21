@@ -70,6 +70,8 @@ namespace Infrastructure.Services
 
 		public void Delete(int classId)
 		{
+			_studentClassService.Delete(classId);
+			_teacherClassService.Delete(classId);
 			_classRepository.Delete(classId);
 		}
 	}

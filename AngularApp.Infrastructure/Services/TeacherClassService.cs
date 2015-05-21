@@ -28,9 +28,9 @@ namespace Infrastructure.Services
 			_teacherClassRepository.Delete(classId,teacherId);
 		}
 
-		public void Delete(int teacherClassId)
+		public void Delete(int classId)
 		{
-			_teacherClassRepository.Delete(teacherClassId);			
+			_teacherClassRepository.Delete(classId);
 		}
 	}
 }
