@@ -33,7 +33,7 @@ namespace AngularApp.Controllers.Api
 
 		[HttpPost]
 		[Route("")]
-		public IHttpActionResult Save(SlimClass slimClass)
+		public IHttpActionResult Save(Class slimClass)
 		{
 			var results = _classService.Insert(slimClass);
 			return Ok(results);
@@ -41,7 +41,7 @@ namespace AngularApp.Controllers.Api
 
 		[HttpPut]
 		[Route("")]
-		public IHttpActionResult Update(SlimClass slimClass)
+		public IHttpActionResult Update(Class slimClass)
 		{
 			try
 			{

@@ -42,7 +42,7 @@ namespace AngularApp.Controllers.Api
 			}
 			catch (Exception ex)
 			{
-				return Ok(ex);
+				return InternalServerError(ex);
 			}
 		}
 

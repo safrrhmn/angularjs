@@ -7,8 +7,8 @@ namespace Core.Services
 	{
 		Class Get(int classId);
 		IEnumerable<Class> Get();
-		void Update(SlimClass updateClass);
-		int Insert(SlimClass updateClass);
+		void Update(Class updateClass);
+		int Insert(Class updateClass);
 		void Delete(int classId);
 	}
 }

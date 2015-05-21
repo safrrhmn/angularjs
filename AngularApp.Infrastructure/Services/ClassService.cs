@@ -58,12 +58,12 @@ namespace Infrastructure.Services
 			});
 		}
 
-		public void Update(SlimClass updateClass)
+		public void Update(Class updateClass)
 		{
 			_classRepository.Update(updateClass);
 		}
 
-		public int Insert(SlimClass updateClass)
+		public int Insert(Class updateClass)
 		{
 			return _classRepository.Insert(updateClass);
 		}

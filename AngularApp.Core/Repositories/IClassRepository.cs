@@ -5,10 +5,10 @@ namespace Core.Repositories
 {
 	public interface IClassRepository
 	{
-		SlimClass Get(int classId);
-		IEnumerable<SlimClass> Get();
-		void Update(SlimClass updateClass);
-		int Insert(SlimClass updateClass);
+		Class Get(int classId);
+		IEnumerable<Class> Get();
+		void Update(Class updateClass);
+		int Insert(Class updateClass);
 		void Delete(int classId);
 	}
 }

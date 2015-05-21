@@ -16,7 +16,7 @@ namespace Infrastructure.Repositories
 			_dbConnectionFactory = dbConnectionFactory;
 		}
 
-		public SlimClass Get(int classId)
+		public Class Get(int classId)
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
@@ -26,11 +26,11 @@ namespace Infrastructure.Repositories
 								 Description
 								 FROM [AngularApp.Sql].dbo.Classes
 								 WHERE ClassId = @classId";
-				return connection.Query<SlimClass>(sql, classId).SingleOrDefault();
+				return connection.Query<Class>(sql, classId).SingleOrDefault();
 			}
 		}
 
-		public int Insert(SlimClass updateClass)
+		public int Insert(Class updateClass)
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
@@ -52,7 +52,7 @@ namespace Infrastructure.Repositories
 			}
 		}		
 
-		public IEnumerable<SlimClass> Get()
+		public IEnumerable<Class> Get()
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
@@ -61,11 +61,11 @@ namespace Infrastructure.Repositories
 								 Name
 								 Description
 								 FROM [AngularApp.Sql].dbo.Classes";
-				return connection.Query<SlimClass>(sql);
+				return connection.Query<Class>(sql);
 			}
 		}
 
-		public void Update(SlimClass updateClass)
+		public void Update(Class updateClass)
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
