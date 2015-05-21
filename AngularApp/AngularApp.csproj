@@ -229,12 +229,23 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\angularapp.module.js" />
     <Content Include="app\config.js" />
+    <Content Include="app\config.resource.js" />
     <Content Include="app\config.route.js" />
     <Content Include="app\controllers\index.js" />
     <Content Include="app\controllers\login.js" />
     <Content Include="app\controllers\pictures.js" />
+    <Content Include="app\module.js" />
+    <Content Include="app\school\config.route.js" />
+    <Content Include="app\school\controllers\ClassManager.js" />
+    <Content Include="app\school\controllers\School.js" />
+    <Content Include="app\school\services\classService.js" />
+    <Content Include="app\school\services\studentService.js" />
+    <Content Include="app\school\services\teacherService.js" />
+    <Content Include="app\school\views\addClassModal.html" />
+    <Content Include="app\school\views\class.html" />
+    <Content Include="app\school\views\index.html" />
+    <Content Include="app\school\views\students.html" />
     <Content Include="app\services\authService.js" />
     <Content Include="app\services\flickrService.js" />
     <Content Include="app\services\loginService.js" />

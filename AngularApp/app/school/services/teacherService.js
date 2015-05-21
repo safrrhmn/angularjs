@@ -3,16 +3,16 @@
 
 	angular
 		.module('angularApp')
-		.factory('Teachers', Teachers);
+		.factory('teacherService', teacherService);
 
 	/**
 	 * @ngdoc service
-	 * @name angularApp.service:Teachers
+	 * @name angularApp.service:teacherService
 	 * @description
 	 *
 	 */
 	/* @ngInject */
-	function Teachers($resource) {
+	function teacherService($resource) {
 		return $resource('/api/teachers/:id', {id: '@teacherId'});
 	}
 

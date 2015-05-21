@@ -10,10 +10,10 @@
 	 */
 	angular.module('angularApp', [
 		// Angular modules
-		'ui.router',
-		'LocalStorageModule'
+		'ngResource',
 
 		// 3rd Party Modules
-
+		'ui.router','ui.bootstrap',
+		'LocalStorageModule'
 	])
 })();

@@ -15,40 +15,29 @@
 				abstract: true,
 				views: {
 					'content@': {
-						templateUrl: viewsPath + 'index.html'
+						templateUrl: viewsPath + 'index.html',
+						controller: 'School',
+						controllerAs: 'school'
 					}
 				}
 			})
 			.state('main.school.home', {
+				//views: {
+				//	'classdetail': {
+				//		templateUrl: viewsPath + 'students.html'
+				//	}
+				//}
+			})
+			.state('main.school.class', {
+				url:'/class/:id',
 				views: {
-					'classes': {
-						templateUrl: viewsPath + 'classes.html'
-					},
-					'students': {
-						templateUrl: viewsPath + 'students.html'
+					'classdetail': {
+						templateUrl: viewsPath + 'class.html',
+						controller: 'ClassManager',
+						controllerAs: 'classmgr'
 					}
 				}
-			});
-		//.state('school.home', {
-		//	url: 'home',
-		//	views: {
-		//		'': {
-		//			templateUrl: '',
-		//			controller: '',
-		//			controllerAs: ''
-		//		}
-		//	}
-		//})
-		//.state('school.home', {
-		//	url: 'home',
-		//	views: {
-		//		'': {
-		//			templateUrl: '',
-		//			controller: '',
-		//			controllerAs: ''
-		//		}
-		//	}
-		//});
+			})
 
 	}
 

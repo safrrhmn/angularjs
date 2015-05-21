@@ -23,7 +23,7 @@ namespace Infrastructure.Repositories
 				const string sql = @"SELECT
 								 C.ClassId,
 								 C.Name,
-								 C.Description,
+								 C.[Description],
 								 T.TeacherId,
 								 T.Name,
 								 T.BirthDate,
@@ -48,7 +48,7 @@ namespace Infrastructure.Repositories
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
-				const string sql = @"INSERT INTO [AngularApp.Sql].dbo.Classes(Name,Description)
+				const string sql = @"INSERT INTO [AngularApp.Sql].dbo.Classes([Name],[Description])
 								 VALUES
 								(@Name,@Description);
 								SELECT CAST(SCOPE_IDENTITY() as int);";
@@ -73,7 +73,7 @@ namespace Infrastructure.Repositories
 				const string sql = @"SELECT
 								 C.ClassId,
 								 C.Name,
-								 C.Description,
+								 C.[Description],
 								 T.TeacherId,
 								 T.Name,
 								 T.BirthDate,
@@ -97,7 +97,7 @@ namespace Infrastructure.Repositories
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
-				const string sql = @"update [AngularApp.Sql].dbo.Classes set Name = @Name,Description = @Description where ClassId = @ClassId";
+				const string sql = @"UPDATE [AngularApp.Sql].dbo.Classes SET [Name] = @Name,[Description] = @Description WHERE ClassId = @ClassId";
 				connection.Execute(sql, updateClass);
 			}
 		}
