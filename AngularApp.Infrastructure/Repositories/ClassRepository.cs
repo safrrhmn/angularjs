@@ -4,7 +4,6 @@ using Core.DataAccess;
 using Core.Models;
 using Core.Repositories;
 using Dapper;
-using Infrastructure.DataAccess;
 
 namespace Infrastructure.Repositories
 {
@@ -17,65 +16,61 @@ namespace Infrastructure.Repositories
 			_dbConnectionFactory = dbConnectionFactory;
 		}
 
-		public int Create(SlimClass insert)
-		{
-			using (var connection = _dbConnectionFactory.GetConnection())
-			{
-				const string sql = @"DECLARE @InstanceId int
-								SELECT @InstanceId = ISNULL(MAX(instanceId),0) + 1 FROM DapperTest.dbo.Classes
-								INSERT INTO DapperTest.dbo.Classes(InstanceId, TeacherId, StudentId) VALUES (@InstanceId, @TeacherId, @StudentId)
-								SELECT @InstanceId";
-				return connection.Query<int>(sql, new { insert.TeacherId, insert.StudentId}).SingleOrDefault();
-			}
-		}
-
-		public void SaveTeacher(int instanceId, int teacherId)
-		{
-			using (var connection = _dbConnectionFactory.GetConnection())
-			{
-				const string sql = @"UPDATE DapperTest.dbo.Classes SET TeacherId = @teacherId WHERE InstanceId = @instanceId";
-				connection.Execute(sql, new {instanceId, teacherId});
-			}
-		}
-
-		public void SaveStudent(SlimClass insert)
-		{
-			using (var connection = _dbConnectionFactory.GetConnection())
-			{
-				const string sql = @"INSERT INTO DapperTest.dbo.Classes(InstanceId, TeacherId, StudentId) VALUES (@InstanceId, @TeacherId, @StudentId)";
-				connection.Execute(sql, new { insert.TeacherId, insert.StudentId });
-			}
-		}
-
-		public IEnumerable<SlimClass> Get(int instanceId)
+		public SlimClass Get(int classId)
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
 				const string sql = @"SELECT
-								 InstanceId
-								 TeacherId
-								 StudentId
-								 FROM DapperTest.dbo.Classes
-								 WHERE InstanceId = @instanceId";
-				return connection.Query<SlimClass>(sql, instanceId);
+								 ClassId
+								 Name
+								 Description
+								 FROM [AngularApp.Sql].dbo.Classes
+								 WHERE ClassId = @classId";
+				return connection.Query<SlimClass>(sql, classId).SingleOrDefault();
 			}
 		}
 
-		public void Delete(int instanceId)
+		public int Insert(SlimClass updateClass)
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
-				const string sql = @"DELETE FROM DapperTest.dbo.Classes WHERE InstanceId = @instanceId";
-				connection.Execute(sql, instanceId);
+				const string sql = @"INSERT INTO [AngularApp.Sql].dbo.Classes(Name,Description) 
+								 VALUES 
+								(@Name,@Description); 
+								SELECT CAST(SCOPE_IDENTITY() as int);";
+
+				return connection.Query<int>(sql, updateClass).First();
 			}
 		}
 
-		public void DeleteStudent(int instanceId, int studentId)
+		public void Delete(int classId)
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
-				const string sql = @"DELETE FROM DapperTest.dbo.Classes WHERE InstanceId = @instanceId AND StudentId = @studentId";
-				connection.Execute(sql, new { instanceId, studentId });
+				const string sql = @"DELETE FROM [AngularApp.Sql].dbo.Classes WHERE ClassId = @classId";
+				connection.Execute(sql, classId);
+			}
+		}		
+
+		public IEnumerable<SlimClass> Get()
+		{
+			using (var connection = _dbConnectionFactory.GetConnection())
+			{
+				const string sql = @"SELECT
+								 ClassId
+								 Name
+								 Description
+								 FROM [AngularApp.Sql].dbo.Classes";
+				return connection.Query<SlimClass>(sql);
+			}
+		}
+
+		public void Update(SlimClass updateClass)
+		{
+			using (var connection = _dbConnectionFactory.GetConnection())
+			{
+				const string sql = @"update [AngularApp.Sql].dbo.Classes set Name = @Name,Description = @Description where ClassId = @ClassId";
+				connection.Execute(sql, updateClass);
 			}
 		}
 	}

@@ -28,5 +28,12 @@ namespace AngularApp.Controllers.Api
 			var results = _classService.Get(id);
 			return Ok(results);
 		}
+
+		[HttpPost]
+		[Route("save")]
+		public IHttpActionResult Save()
+		{			
+			return Ok(5);
+		}
 	}
 }

@@ -3,7 +3,6 @@ using Core.DataAccess;
 using Core.Models;
 using Core.Repositories;
 using Dapper;
-using Infrastructure.DataAccess;
 
 namespace Infrastructure.Repositories
 {
@@ -16,11 +15,11 @@ namespace Infrastructure.Repositories
 			_dbConnectionFactory = dbConnectionFactory;
 		}
 
-		public int Save(Student studentToSave)
+		public int Insert(Student studentToSave)
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
-				const string sql = @"INSERT INTO DapperTest.dbo.Students(Name,BirthDate,Address1,Address2,City,State,Zipcode) 
+				const string sql = @"INSERT INTO [AngularApp.Sql].dbo.Students(Name,BirthDate,Address1,Address2,City,State,Zipcode) 
 								 VALUES 
 								(@Name,@BirthDate,@Address1,@Address2,@City,@State,@Zipcode); 
 								SELECT CAST(SCOPE_IDENTITY() as int);";
@@ -33,7 +32,7 @@ namespace Infrastructure.Repositories
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
-				const string sql = @"UPDATE DapperTest.dbo.Students SET 
+				const string sql = @"UPDATE [AngularApp.Sql].dbo.Students SET 
 								 Name = @Name,
 								 BirthDate = @BirthDate,
 								 Address1 = @Address1,
@@ -60,7 +59,7 @@ namespace Infrastructure.Repositories
 								 City,
 								 State,
 								 Zipcode
-								 FROM DapperTest.dbo.Students
+								 FROM [AngularApp.Sql].dbo.Students
 								 WHERE StudentId = @studentId";
 
 				return connection.Query<Student>(sql, studentId).SingleOrDefault();
@@ -71,7 +70,7 @@ namespace Infrastructure.Repositories
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
-				const string sql = @"DELETE FROM DapperTest.dbo.Students WHERE StudentId = @studentId";
+				const string sql = @"DELETE FROM [AngularApp.Sql].dbo.Students WHERE StudentId = @studentId";
 
 				connection.Execute(sql, studentId);
 			}

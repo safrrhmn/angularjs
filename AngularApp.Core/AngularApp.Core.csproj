@@ -40,11 +40,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\IDbConnectionFactory.cs" />
+    <Compile Include="Models\StudentClass.cs" />
+    <Compile Include="Models\TeacherClass.cs" />
     <Compile Include="Repositories\IClassRepository.cs" />
+    <Compile Include="Repositories\IStudentClassRepository.cs" />
     <Compile Include="Repositories\IStudentRepository.cs" />
+    <Compile Include="Repositories\ITeacherClassRepository.cs" />
     <Compile Include="Repositories\ITeacherRepository.cs" />
     <Compile Include="Services\IClassService.cs" />
+    <Compile Include="Services\IStudentClassService.cs" />
     <Compile Include="Services\IStudentService.cs" />
+    <Compile Include="Services\ITeacherClassService.cs" />
     <Compile Include="Services\ITeacherService.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\SlimClass.cs" />

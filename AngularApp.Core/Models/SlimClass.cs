@@ -2,8 +2,8 @@
 {
 	public class SlimClass
 	{
-		public int InstanceId { get; set; }
-		public int TeacherId { get; set; }
-		public int StudentId { get; set; }
+		public int ClassId { get; set; }
+		public string Name { get; set; }
+		public string Description { get; set; }
 	}
 }

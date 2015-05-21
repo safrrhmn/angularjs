@@ -11,55 +11,66 @@ namespace Infrastructure.Services
 		private readonly IClassRepository _classRepository;
 		private readonly IStudentService _studentService;
 		private readonly ITeacherService _teacherService;
+		private readonly IStudentClassService _studentClassService;
+		private readonly ITeacherClassService _teacherClassService;
 
-		public ClassService(IClassRepository classRepository, IStudentService studentService, ITeacherService teacherService)
+		public ClassService(IClassRepository classRepository, IStudentService studentService, ITeacherService teacherService, IStudentClassService studentClassService, ITeacherClassService teacherClassService)
 		{
 			_classRepository = classRepository;
 			_studentService = studentService;
 			_teacherService = teacherService;
+			_studentClassService = studentClassService;
+			_teacherClassService = teacherClassService;
 		}
 
-		public int Create(SlimClass insert)
-		{
-			return _classRepository.Create(insert);
-		}
 
-		public void SaveTeacher(int instanceId, int teacherId)
+		public Class Get(int classId)
 		{
-			_classRepository.SaveTeacher(instanceId, teacherId);
-		}
-
-		public void SaveStudent(SlimClass insert)
-		{
-			_classRepository.SaveStudent(insert);
-		}
-
-		public Class Get(int instanceId)
-		{
-			var slims = _classRepository.Get(instanceId).ToList();
-			var teacher = _teacherService.Get(slims.First().TeacherId);
-			var students = slims.Select(item => _studentService.Get(item.StudentId));
+			var slimclass = _classRepository.Get(classId);
+			var teacher = _teacherClassService.Get(classId);
+			var students = _studentClassService.Get(classId);
 			return new Class
 			{
-				InstanceId = instanceId,
-				Teacher = teacher,
-				Students = students
+				ClassId = slimclass.ClassId,
+				Description = slimclass.Description,
+				Name = slimclass.Name,
+				Students = students.Select(item => _studentService.Get(item.StudentId)),
+				Teacher = _teacherService.Get(teacher.TeacherId)
 			};
 		}
 
 		public IEnumerable<Class> Get()
 		{
-			throw new System.NotImplementedException();
+			var slimclass = _classRepository.Get();
+
+			return slimclass.Select(item =>
+			{
+				var teacher = _teacherClassService.Get(item.ClassId);
+				var students = _studentClassService.Get(item.ClassId);
+				return new Class
+				{
+					ClassId = item.ClassId,
+					Description = item.Description,
+					Name = item.Name,
+					Students = students.Select(student => _studentService.Get(student.StudentId)),
+					Teacher = _teacherService.Get(teacher.TeacherId)
+				};
+			});
 		}
 
-		public void Delete(int instanceId)
+		public void Update(SlimClass updateClass)
 		{
-			_classRepository.Delete(instanceId);
+			_classRepository.Update(updateClass);
 		}
 
-		public void DeleteStudent(int instanceId, int studentId)
+		public int Insert(SlimClass updateClass)
 		{
-			_classRepository.DeleteStudent(instanceId, studentId);
+			return _classRepository.Insert(updateClass);
+		}
+
+		public void Delete(int classId)
+		{
+			_classRepository.Delete(classId);
 		}
 	}
 }

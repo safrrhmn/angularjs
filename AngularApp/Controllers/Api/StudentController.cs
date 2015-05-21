@@ -1,4 +1,5 @@
-﻿using Core.Services;
+﻿using Core.Models;
+using Core.Services;
 using System.Web.Http;
 
 namespace AngularApp.Controllers.Api
@@ -18,6 +19,14 @@ namespace AngularApp.Controllers.Api
 		public IHttpActionResult Get(int id)
 		{
 			var result = _studentService.Get(id);
+			return Ok(result);
+		}
+
+		[HttpPost]
+		[Route("")]
+		public IHttpActionResult Save(Student student)
+		{
+			var result = _studentService.Insert(student);
 			return Ok(result);
 		}
 	}

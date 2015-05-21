@@ -13,9 +13,9 @@ namespace Infrastructure.Services
 			_repository = repository;
 		}
 
-		public int Save(Student studentToSave)
+		public int Insert(Student studentToSave)
 		{
-			return _repository.Save(studentToSave);
+			return _repository.Insert(studentToSave);
 		}
 
 		public void Update(Student studentToUpdate)

@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\dbo.Classes.sql" />
+    <Build Include="Tables\dbo.Classes.Teachers.sql" />
+    <Build Include="Tables\dbo.Classes.Students.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\dbo.Students.sql" />

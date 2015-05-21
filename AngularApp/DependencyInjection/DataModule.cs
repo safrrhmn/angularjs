@@ -22,7 +22,7 @@ namespace AngularApp.DependencyInjection
 			builder.RegisterType<ClassRepository>().As<IClassRepository>().InstancePerRequest();
 			builder.RegisterType<ClassService>().As<IClassService>().InstancePerRequest();
 
-			builder.Register(dbfac => new DbConnectionFactory(ConfigurationManager.ConnectionStrings["DapperTest"].ToString()))
+			builder.Register(dbfac => new DbConnectionFactory(ConfigurationManager.ConnectionStrings["AngularApp.Sql"].ToString()))
 				.As<IDbConnectionFactory>().InstancePerRequest();
 
 			base.Load(builder);

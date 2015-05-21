@@ -5,12 +5,10 @@ namespace Core.Services
 {
 	public interface IClassService
 	{
-		int Create(SlimClass insert);
-		void SaveTeacher(int instanceId, int teacherId);
-		void SaveStudent(SlimClass insert);
-		Class Get(int instanceId);
-		IEnumerable<Class> Get(); 
-		void Delete(int instanceId);		
-		void DeleteStudent(int instanceId, int studentId);
+		Class Get(int classId);
+		IEnumerable<Class> Get();
+		void Update(SlimClass updateClass);
+		int Insert(SlimClass updateClass);
+		void Delete(int classId);
 	}
 }
