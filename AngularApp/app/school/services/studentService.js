@@ -13,7 +13,10 @@
 	 */
 	/* @ngInject */
 	function studentService($resource) {
-		return $resource('/api/students/:id', {id: '@studentId'});
+		return {
+			studentResource: $resource('/api/student/:id', {id: '@studentId'}),
+			studentClassResource: $resource('/api/studentclass/:id/:classId', {id: '@studentId', classId: '@classId'})
+		}
 	}
 
 })();

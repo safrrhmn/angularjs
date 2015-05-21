@@ -10,8 +10,8 @@
 
 gulp.task('build', function () {
 	var cssFiles = gulp.src('./content/styles/app.less')
-		.pipe(less());
-	//.pipe(gulp.dest('./build'));
+		.pipe(less())
+		.pipe(gulp.dest('./content/styles'));
 
 	var jsFiles = gulp.src('./app/**/*.js')
 		.pipe(angularFilesort())

@@ -42,22 +42,22 @@ namespace AngularApp.Controllers.Api
 			}
 			catch (Exception ex)
 			{
-				return Ok(ex);
+				return InternalServerError(ex);
 			}
 		}
 
 		[HttpDelete]
-		[Route("{studentId}/{classId}")]
-		public IHttpActionResult Delete(int studentId, int classId)
+		[Route("{teacherId}/{classId}")]
+		public IHttpActionResult Delete(int teacherId, int classId)
 		{
 			try
 			{
-				_teacherClassService.Delete(classId, studentId);
+				_teacherClassService.Delete(classId, teacherId);
 				return Ok(true);
 			}
 			catch (Exception ex)
 			{
-				return Ok(ex);
+				return InternalServerError(ex);
 			}
 		}
 	}
