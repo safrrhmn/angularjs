@@ -21,8 +21,8 @@ namespace Infrastructure.Repositories
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
 				const string sql = @"SELECT
-								 ClassId
-								 Name
+								 ClassId,
+								 Name,
 								 Description
 								 FROM [AngularApp.Sql].dbo.Classes
 								 WHERE ClassId = @classId";
@@ -57,8 +57,8 @@ namespace Infrastructure.Repositories
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
 				const string sql = @"SELECT
-								 ClassId
-								 Name
+								 ClassId,
+								 Name,
 								 Description
 								 FROM [AngularApp.Sql].dbo.Classes";
 				return connection.Query<Class>(sql);

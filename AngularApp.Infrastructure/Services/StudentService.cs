@@ -1,4 +1,5 @@
-﻿using Core.Models;
+﻿using System.Collections.Generic;
+using Core.Models;
 using Core.Repositories;
 using Core.Services;
 
@@ -26,6 +27,11 @@ namespace Infrastructure.Services
 		public Student Get(int studentId)
 		{
 			return _repository.Get(studentId);
+		}
+
+		public IEnumerable<Student> Get()
+		{
+			return _repository.Get();
 		}
 
 		public void Delete(int studentId)

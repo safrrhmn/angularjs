@@ -16,6 +16,14 @@ namespace AngularApp.Controllers.Api
 		}
 
 		[HttpGet]
+		[Route("")]
+		public IHttpActionResult Get()
+		{
+			var results = _studentService.Get();
+			return Ok(results);
+		}
+		
+		[HttpGet]
 		[Route("{id}")]
 		public IHttpActionResult Get(int id)
 		{

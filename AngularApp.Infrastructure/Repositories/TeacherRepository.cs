@@ -1,4 +1,5 @@
-﻿using Core.DataAccess;
+﻿using System.Collections.Generic;
+using Core.DataAccess;
 using Core.Models;
 using Core.Repositories;
 using Dapper;
@@ -63,6 +64,25 @@ namespace Infrastructure.Repositories
 								 WHERE TeacherId = @teacherId";
 
 				return connection.Query<Teacher>(sql, new { teacherId }).SingleOrDefault();
+			}
+		}
+
+		public IEnumerable<Teacher> Get()
+		{
+			using (var connection = _dbConnectionFactory.GetConnection())
+			{
+				const string sql = @"SELECT
+								 TeacherId,
+								 Name,
+								 BirthDate,
+								 Address1,
+								 Address2,
+								 City,
+								 State,
+								 Zipcode
+								 FROM [AngularApp.Sql].dbo.Teachers";
+
+				return connection.Query<Teacher>(sql);
 			}
 		}
 

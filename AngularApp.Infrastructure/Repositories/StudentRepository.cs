@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Core.DataAccess;
 using Core.Models;
 using Core.Repositories;
@@ -63,6 +64,25 @@ namespace Infrastructure.Repositories
 								 WHERE StudentId = @studentId";
 
 				return connection.Query<Student>(sql, new {studentId}).SingleOrDefault();
+			}
+		}
+
+		public IEnumerable<Student> Get()
+		{
+			using (var connection = _dbConnectionFactory.GetConnection())
+			{
+				const string sql = @"SELECT
+								 StudentId,
+								 Name,
+								 BirthDate,
+								 Address1,
+								 Address2,
+								 City,
+								 State,
+								 Zipcode
+								 FROM [AngularApp.Sql].dbo.Students";
+
+				return connection.Query<Student>(sql);
 			}
 		}
 
