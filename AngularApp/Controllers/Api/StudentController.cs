@@ -55,7 +55,7 @@ namespace AngularApp.Controllers.Api
 		}
 
 		[HttpDelete]
-		[Route("")]
+		[Route("{id}")]
 		public IHttpActionResult Delete(int id)
 		{
 			try
