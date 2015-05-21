@@ -1,4 +1,6 @@
-﻿using Core.Services;
+﻿using System;
+using Core.Models;
+using Core.Services;
 using System.Web.Http;
 
 namespace AngularApp.Controllers.Api
@@ -30,10 +32,41 @@ namespace AngularApp.Controllers.Api
 		}
 
 		[HttpPost]
-		[Route("save")]
-		public IHttpActionResult Save()
-		{			
-			return Ok(5);
+		[Route("")]
+		public IHttpActionResult Save(SlimClass slimClass)
+		{
+			var results = _classService.Insert(slimClass);
+			return Ok(results);
+		}
+
+		[HttpPut]
+		[Route("")]
+		public IHttpActionResult Update(SlimClass slimClass)
+		{
+			try
+			{
+				_classService.Update(slimClass);
+				return Ok(true);
+			}
+			catch (Exception ex)
+			{
+				return Ok(ex);
+			}
+		}
+
+		[HttpDelete]
+		[Route("{id}")]
+		public IHttpActionResult Delete(int id)
+		{
+			try
+			{
+				_classService.Delete(id);
+				return Ok(true);
+			}
+			catch (Exception ex)
+			{
+				return Ok(ex);
+			}
 		}
 	}
 }

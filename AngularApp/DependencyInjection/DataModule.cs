@@ -22,6 +22,12 @@ namespace AngularApp.DependencyInjection
 			builder.RegisterType<ClassRepository>().As<IClassRepository>().InstancePerRequest();
 			builder.RegisterType<ClassService>().As<IClassService>().InstancePerRequest();
 
+			builder.RegisterType<StudentClassRepository>().As<IStudentClassRepository>().InstancePerRequest();
+			builder.RegisterType<StudentClassService>().As<IStudentClassService>().InstancePerRequest();
+
+			builder.RegisterType<TeacherClassRepository>().As<ITeacherClassRepository>().InstancePerRequest();
+			builder.RegisterType<TeacherClassService>().As<ITeacherClassService>().InstancePerRequest();
+
 			builder.Register(dbfac => new DbConnectionFactory(ConfigurationManager.ConnectionStrings["AngularApp.Sql"].ToString()))
 				.As<IDbConnectionFactory>().InstancePerRequest();
 

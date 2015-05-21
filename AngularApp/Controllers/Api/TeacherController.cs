@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using Core.Models;
 using Core.Services;
 
@@ -23,11 +24,42 @@ namespace AngularApp.Controllers.Api
 		}
 
 		[HttpPost]
-		[Route("save")]
+		[Route("")]
 		public IHttpActionResult Save(Teacher teacher)
 		{
 			var result = _teacherService.Insert(teacher);
 			return Ok(result);
+		}
+
+		[HttpPut]
+		[Route("")]
+		public IHttpActionResult Update(Teacher teacher)
+		{
+			
+			try
+			{
+				_teacherService.Update(teacher);
+				return Ok(true);
+			}
+			catch (Exception ex)
+			{
+				return Ok(ex);
+			}
+		}
+
+		[HttpDelete]
+		[Route("{id}")]
+		public IHttpActionResult Delete(int id)
+		{
+			try
+			{
+				_teacherService.Delete(id);
+				return Ok(true);
+			}
+			catch (Exception ex)
+			{
+				return Ok(ex);
+			}
 		}
 	}
 }
