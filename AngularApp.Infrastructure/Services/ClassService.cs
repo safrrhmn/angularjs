@@ -27,16 +27,8 @@ namespace Infrastructure.Services
 		public Class Get(int classId)
 		{
 			var slimclass = _classRepository.Get(classId);
-			var teacher = _teacherClassService.Get(classId);
-			var students = _studentClassService.Get(classId);
-			return new Class
-			{
-				ClassId = slimclass.ClassId,
-				Description = slimclass.Description,
-				Name = slimclass.Name,
-				Students = students.Select(item => _studentService.Get(item.StudentId)),
-				Teacher = _teacherService.Get(teacher.TeacherId)
-			};
+			slimclass.Students = _studentClassService.Get(classId).Select(item => _studentService.Get(item.StudentId));
+			return slimclass;
 		}
 
 		public IEnumerable<Class> Get()
@@ -44,17 +36,10 @@ namespace Infrastructure.Services
 			var slimclass = _classRepository.Get();
 
 			return slimclass.Select(item =>
-			{
-				var teacher = _teacherClassService.Get(item.ClassId);
-				var students = _studentClassService.Get(item.ClassId);
-				return new Class
-				{
-					ClassId = item.ClassId,
-					Description = item.Description,
-					Name = item.Name,
-					Students = students.Select(student => _studentService.Get(student.StudentId)),
-					Teacher = _teacherService.Get(teacher.TeacherId)
-				};
+			{				
+				var students = _studentClassService.Get(item.ClassId).Select(student => _studentService.Get(student.StudentId));
+				item.Students = students;
+				return item;				
 			});
 		}
 

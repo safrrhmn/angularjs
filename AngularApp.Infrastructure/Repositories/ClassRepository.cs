@@ -21,12 +21,26 @@ namespace Infrastructure.Repositories
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
 				const string sql = @"SELECT
-								 ClassId,
-								 Name,
-								 Description
-								 FROM [AngularApp.Sql].dbo.Classes
-								 WHERE ClassId = @classId";
-				return connection.Query<Class>(sql, new {classId}).SingleOrDefault();
+								 C.ClassId,
+								 C.Name,
+								 C.Description,
+								 T.TeacherId,
+								 T.Name,
+								 T.BirthDate,
+								 T.Address1,
+								 T.Address2,
+								 T.City,
+								 T.State,
+								 T.Zipcode
+								 FROM [AngularApp.Sql].dbo.Classes C
+								 left outer join [AngularApp.Sql].dbo.[Classes.Teachers] CT on CT.ClassId = C.ClassId
+								 Left outer join [AngularApp.Sql].dbo.[Teachers] T on T.TeacherId = CT.TeacherId
+								 WHERE C.ClassId = @classId";
+				return connection.Query<Class, Teacher, Class>(sql, (@class, teacher) =>
+				{
+					@class.Teacher = teacher;
+					return @class;
+				}, new { classId }, splitOn: "TeacherId").SingleOrDefault();
 			}
 		}
 
@@ -34,9 +48,9 @@ namespace Infrastructure.Repositories
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
-				const string sql = @"INSERT INTO [AngularApp.Sql].dbo.Classes(Name,Description) 
-								 VALUES 
-								(@Name,@Description); 
+				const string sql = @"INSERT INTO [AngularApp.Sql].dbo.Classes(Name,Description)
+								 VALUES
+								(@Name,@Description);
 								SELECT CAST(SCOPE_IDENTITY() as int);";
 
 				return connection.Query<int>(sql, updateClass).First();
@@ -50,18 +64,32 @@ namespace Infrastructure.Repositories
 				const string sql = @"DELETE FROM [AngularApp.Sql].dbo.Classes WHERE ClassId = @classId";
 				connection.Execute(sql, new { classId });
 			}
-		}		
+		}
 
 		public IEnumerable<Class> Get()
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
 				const string sql = @"SELECT
-								 ClassId,
-								 Name,
-								 Description
-								 FROM [AngularApp.Sql].dbo.Classes";
-				return connection.Query<Class>(sql);
+								 C.ClassId,
+								 C.Name,
+								 C.Description,
+								 T.TeacherId,
+								 T.Name,
+								 T.BirthDate,
+								 T.Address1,
+								 T.Address2,
+								 T.City,
+								 T.State,
+								 T.Zipcode
+								 FROM [AngularApp.Sql].dbo.Classes C
+								 left outer join [AngularApp.Sql].dbo.[Classes.Teachers] CT on CT.ClassId = C.ClassId
+								 Left outer join [AngularApp.Sql].dbo.[Teachers] T on T.TeacherId = CT.TeacherId";
+				return connection.Query<Class, Teacher, Class>(sql, (@class, teacher) =>
+				{
+					@class.Teacher = teacher;
+					return @class;
+				}, splitOn: "TeacherId");
 			}
 		}
 

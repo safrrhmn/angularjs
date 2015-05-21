@@ -32,7 +32,7 @@ namespace Infrastructure.Repositories
 		{
 			using (var connection = _dbConnectionFactory.GetConnection())
 			{
-				const string sql = @"SELECT Classes.StudentsId AS TeacherClassId,ClassId,TeacherId FROM [AngularApp.Sql].dbo.[Classes.Teachers] WHERE ClassId = @classId";
+				const string sql = @"SELECT [Classes.TeachersId] AS TeacherClassId,ClassId,TeacherId FROM [AngularApp.Sql].dbo.[Classes.Teachers] WHERE ClassId = @classId";
 
 				return connection.Query<TeacherClass>(sql, new { classId }).SingleOrDefault();
 			}
